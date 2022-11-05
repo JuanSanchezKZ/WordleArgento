@@ -1,4 +1,5 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { VALID_GUESSES } from 'src/constants/validGuesses';
 
 import { WordleWordsService } from '../wordle-services/wordle-words.service';
 
@@ -31,6 +32,7 @@ export class WordlePanelComponent implements OnInit, OnChanges {
   guessesRemaining = 6;
   guessesIndex = [5, 4, 3, 2, 1, 0];
   color: string[] = [];
+  triggerAnimation: boolean[] = [];
 
   constructor(public words: WordleWordsService) {}
 
@@ -42,10 +44,15 @@ export class WordlePanelComponent implements OnInit, OnChanges {
   checkWord() {
     const wordWrapper = this.wordWrapper[this.guessesRemaining - 1];
 
-    if (this.wordleInput === 'ENTER' && wordWrapper.word.length === 5) {
+    if (
+      this.wordleInput === 'ENVIAR' &&
+      wordWrapper.word.length === 5 &&
+      VALID_GUESSES.includes(wordWrapper.word.join('').toLowerCase())
+    ) {
       this.checkColor();
       this.guessesRemaining -= 1;
       this.color.push('white');
+      this.triggerAnimation.push(true);
 
       if (wordWrapper.word.join('') === this.words.rightGuessString) {
         alert('PALABRA CORRECTA');
@@ -54,13 +61,13 @@ export class WordlePanelComponent implements OnInit, OnChanges {
     }
 
     if (
-      !(this.wordleInput == 'ENTER' || this.wordleInput == 'BACKSPACE') &&
+      !(this.wordleInput == 'ENVIAR' || this.wordleInput == 'ELIMINAR') &&
       wordWrapper.word.length < 5
     ) {
       wordWrapper.word.push(this.wordleInput);
     }
 
-    if (this.wordleInput == 'BACKSPACE') {
+    if (this.wordleInput == 'ELIMINAR') {
       wordWrapper.word.pop();
     }
 

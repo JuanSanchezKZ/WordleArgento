@@ -17,8 +17,8 @@ export class WordleInputComponent implements OnInit {
 
   public qwertyKeyboard = [
     ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
-    ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Ñ', 'BACKSPACE'],
-    ['Z', 'X', 'C', 'V', 'B', 'N', 'M', 'ENTER'],
+    ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Ñ', 'ELIMINAR'],
+    ['Z', 'X', 'C', 'V', 'B', 'N', 'M', 'ENVIAR'],
   ];
 
   constructor() {}
