@@ -1,8 +1,15 @@
 <div
   class="keyboardWordle"
-  *ngFor="let keyboardRow of qwertyKeyboard; let index = index"
+  *ngFor="let keyboardRow of qwertyKeyboard; let indexRow = index"
 >
   <div *ngFor="let key of keyboardRow; let index = index">
-    <button (click)="onSubmit(key)">{{ key }}</button>
+    <button
+      [style.background-color]="
+        !bgColor.includes(key) ? bgColor[indexRow][index] : ''
+      "
+      (click)="onSubmit(key)"
+    >
+      {{ key }}
+    </button>
   </div>
 </div>
