@@ -1,0 +1,8 @@
+<div
+  class="keyboardWordle"
+  *ngFor="let keyboardRow of qwertyKeyboard; let index = index"
+>
+  <div *ngFor="let key of keyboardRow; let index = index">
+    <button (click)="onSubmit(key)">{{ key }}</button>
+  </div>
+</div>

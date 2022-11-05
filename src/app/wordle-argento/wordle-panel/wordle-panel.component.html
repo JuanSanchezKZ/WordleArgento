@@ -1,0 +1,28 @@
+<div class="container-fluid mt-5">
+  <div *ngFor="let i of rowAmount; let j = index">
+    <div class="rowCells">
+      <div class="rowCells" *ngFor="let i of cellAmount; let index = index">
+        <app-wordle-cell
+          [style.color]="color[j]"
+          [style.textShadow]="color[j] === 'white' ? '#474747 3px 5px 1px' : ''"
+          [style.background-color]="
+            wordWrapper.length > j
+              ? letterColor[guessesIndex[j]].colors[index]
+              : 'white'
+          "
+          class="wordleCell"
+          [wordleInput]="
+            wordWrapper.length > j
+              ? wordWrapper[guessesIndex[j]].word[index]
+              : ''
+          "
+        ></app-wordle-cell>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container mt-5">
+  <app-wordle-input
+    (onFormGroupChange)="onFormGroupChangeEvent($event)"
+  ></app-wordle-input>
+</div>

@@ -1,0 +1,35 @@
+* {
+  background-color: #75aadb;
+}
+
+.container-fluid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.rowCells {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1%;
+  width: 100%;
+  height: 100%;
+}
+
+.wordleCell {
+  border: 1px solid rgba(0, 0, 0, 0.384);
+  background-color: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  margin-top: 0.3rem;
+  border-radius: 8px;
+  width: 60px;
+  height: 60px;
+}
